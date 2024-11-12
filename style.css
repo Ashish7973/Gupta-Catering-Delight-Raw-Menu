@@ -1,0 +1,358 @@
+.header-logo {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+}
+
+.navbar-logo {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.carousel {
+    margin: auto;
+    position: relative;
+}
+
+.carousel-item {
+    transition: transform 1s ease; /* Smooth transition */
+}
+
+.carousel-item img {
+    width: 100%;  /* Full width */
+    height: 500px; /* Standard height */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+
+/* Smooth scroll behavior for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.header, .footer {
+    background: linear-gradient(90deg, #8c52ff, #5ce1e6);
+    padding: 20px;
+    color: white;
+}
+
+.navbar {
+    background: linear-gradient(90deg,#ded3f5, #ded3f5 );
+    transition: all 0.3s ease;
+}
+
+/* Fixed navbar styles */
+.fixed-top {
+    position: fixed; /* Fix position at the top */
+    top: 0; /* Align to the top of the viewport */
+    left: 0; /* Align to the left */
+    right: 0; /* Align to the right */
+    z-index: 1000; /* Ensure it stays above other content */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+/* Additional padding for the body when navbar is fixed */
+body.fixed-nav {
+    padding-top: 60px; /* Adjust this value according to your navbar height */
+}
+
+.menu-section {
+    padding: 40px 20px;
+}
+
+h2 {
+    color: #8c52ff;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.enquiry-section {
+    padding: 40px 20px;
+    background-color: #eee;
+}
+
+.enquiry-form input,
+.enquiry-form textarea {
+    margin-bottom: 10px;
+}
+
+.material-list {
+    background-color: #f5f5f5; /* Light background */
+    padding: 20px; /* Adds space inside the div */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 20px; /* Space below the div */
+    text-align: center; /* Center-aligns the content */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+.material-list h4 {
+    font-family: Arial, sans-serif; /* Font style */
+    color: #333; /* Text color */
+    font-weight: bold; /* Bold text */
+    font-size: 1.5em; /* Font size */
+    margin: 0; /* Removes default margin */
+}
+
+.menu-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+
+
+/* Style for the selected items container */
+#selectedItems {
+    background-color: #ded3f5; /* Light cyan background for the container */
+    padding: 20px; /* Padding around the selected items section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Style for each heading of selected items */
+#selectedItems h4 {
+    font-size: 1.5em; /* Larger font size for headings */
+    color: #4f64cd; /* Teal color for headings */
+    margin-bottom: 10px; /* Space below headings */
+}
+
+/* Style for each individual selected item */
+#selectedItems div {
+    background-color: #ffffff; /* White background for items */
+    border: 2px solid #9b75ed; /* Light cyan border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px; /* Padding inside item boxes */
+    margin-bottom: 8px; /* Space between items */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition effects */
+}
+
+/* Hover effect for items */
+#selectedItems div:hover {
+    background-color: #b9a0ed; /* Light cyan background on hover */
+    transform: scale(1.02); /* Slightly enlarge the item */
+}
+
+.menu-section .gallery-image,
+.menu-section .gallery-video {
+    width: 100%;
+    height: 400px; /* Fixed height for both images and videos */
+    object-fit: cover; /* Ensures content fills the container while maintaining aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional additional styling for video container if needed */
+.video-wrapper {
+    width: 100%;
+    height: 400px; /* Matches the fixed height of images */
+    overflow: hidden;
+    position: relative;
+}
+
+.video-wrapper .gallery-video {
+    width: 100%;
+    height: 100%;
+}
+
+.stalls-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3c763d; /* A nice green tone */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #f7b733, #fc4a1a); /* Gradient background for text */
+    -webkit-background-clip: text; /* For Safari/Chrome */
+    -moz-background-clip: text;    /* For Firefox */
+    -o-background-clip: text;      /* For Opera */
+    background-clip: text;         /* Standard */
+    -webkit-text-fill-color: transparent; /* Ensures the gradient shows through */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #fc4a1a; /* Underline effect */
+}
+
+
+
+
+
+
+/* Wrapper for all product rows to simulate a table layout */
+.product-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto; /* Columns for checkbox, label, quantity, and unit */
+    gap: 10px; /* Space between columns */
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Align label text to the left */
+label {
+    text-align: left;
+}
+
+/* Style for checkbox */
+input[type="checkbox"] {
+    margin-left: 10px;
+}
+
+/* Style for unit select field */
+select {
+    width: 60px;
+}
+
+/* Optional: Add some styling to the row container for better visual clarity */
+.product-row {
+    border: 1px solid #a8cae5; /* Optional border */
+    padding: 5px;
+}
+
+/* Optional: Add some hover effect for rows */
+.product-row:hover {
+    background-color: #eac1c1;
+}
+
+.accordion-header :hover{
+    background-color: #a8cae5;
+}
+
+
+
+
+
+
+
+/* General Container */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Form Section */
+.form-section {
+    background-color: #f4f4f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Form Inputs */
+.form-control {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+/* Input Focus Effect */
+.form-control:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+/* Textarea Specific Styling */
+textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Raw Material List Section */
+.material-list {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(90deg,#ded3f5, #ded3f5 );
+    transition: all 0.3s ease;
+}
+
+.material-list h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .material-list h4 {
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+/* Modal header styling */
+.modal-header {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.modal-body {
+    font-size: 16px;
+    padding: 20px;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.btn {
+    margin-right: 10px;
+}
+
+/* Add more styles as needed */
