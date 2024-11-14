@@ -84,8 +84,42 @@ function generatePDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // Get the page width (A4 is 210mm by 297mm)
+    // Constants for A4 page dimensions
+    const pageHeight = doc.internal.pageSize.height;
     const pageWidth = doc.internal.pageSize.width;
+
+    // Define header and watermark text
+    const headerText = "GUPTA CATERING DELIGHT";
+    const locationText = "Ludhiana 9814035730";
+    const watermarkText = "GUPTA 9814035730";
+
+    // Function to add watermark in the background
+    function addWatermarks() {
+        doc.setTextColor(220); // Very light gray color for watermark
+        doc.setFontSize(30); // Large font size for watermark
+
+        // Place multiple watermarks diagonally on the page
+        const watermarkPositions = [
+            { x: pageWidth * 0.5, y: pageHeight * 0.4 },
+            { x: pageWidth * 0.5, y: pageHeight * 0.7 },
+            { x: pageWidth * 0.5, y: pageHeight * 1.0 }
+        ];
+        watermarkPositions.forEach(pos => {
+            doc.text(watermarkText, pos.x, pos.y, { align: 'center', angle: 45 });
+        });
+        doc.setTextColor(0); // Reset color for main content
+    }
+
+    // Function to add centered header with styling
+    function addHeader() {
+        doc.setFontSize(14);
+        doc.setTextColor(50, 50, 150); // Dark blue color for the header
+        doc.text(headerText, pageWidth / 2, 15, { align: 'center' });
+        doc.setFontSize(10);
+        doc.setTextColor(80, 80, 80); // Gray color for location
+        doc.text(locationText, pageWidth / 2, 23, { align: 'center' });
+        doc.setTextColor(0); // Reset color for other text
+    }
 
     // Get form data
     const functionDate = document.getElementById("functionDate").value;
@@ -93,41 +127,53 @@ function generatePDF() {
     const totalMembers = document.getElementById("totalMembers").value;
     const menu = document.getElementById("menu").value;
 
+    // Add watermark and header to the first page
+    addWatermarks();
+    addHeader();
+
     // Add form data to PDF
-    doc.text("Function Date:    " + functionDate, 10, 10);
-    doc.text("Place:            " + place, 10, 20);
-    doc.text("Total Members:    " + totalMembers, 10, 30);
-    doc.text("Menu:             " + menu, 10, 40);
+    doc.text("Function Date:    " + functionDate, 10, 40);
+    doc.text("Place:            " + place, 10, 50);
+    doc.text("Total Members:    " + totalMembers, 10, 60);
+    doc.text("Menu:             " + menu, 10, 70);
 
     // Add the menu list items
     const menuItems = getMenuItems();
-    let yOffset = 60; // Start adding the menu items from a specific position
+    let yOffset = 90; // Start adding the menu items from a specific position
 
-    // Raw Material List - Centered text
+    // Raw Material List - Centered title
     const titleText = "------------Raw Material List------------";
-    const titleWidth = doc.getTextWidth(titleText);  // Get width of the text
-    const xOffset = (pageWidth - titleWidth) / 2;   // Calculate x to center the text
-    doc.text(titleText, xOffset, 60);  // Add the centered title text
-    
+    const titleWidth = doc.getTextWidth(titleText);
+    const xOffset = (pageWidth - titleWidth) / 2;
+    doc.text(titleText, xOffset, yOffset);
+
     yOffset += 10; // Space after the heading
     let itemNumber = 1; // Start item numbering
 
     menuItems.forEach(item => {
-        const itemText = `${itemNumber}. ${item.item}`; // Item text with numbering
-        const quantityText = ` ${item.quantity} ${item.unit}`; // Quantity with unit
-        
-        // Define a fixed position for the "-" symbol
-        const dashPosition = 120; // Adjust this value based on your preferred alignment
-        
-        // Add item name
+        const itemText = `${itemNumber}. ${item.item}`;
+        const quantityText = ` ${item.quantity} ${item.unit}`;
+        const dashPosition = 120; // Position for alignment
+
+        // Check if we need a new page
+        if (yOffset + 10 > pageHeight) {
+            doc.addPage(); // Add a new page
+            yOffset = 30;  // Reset yOffset for the new page
+            
+            // Add watermark and header for each new page
+            addWatermarks();
+            addHeader();
+        }
+
+        // Add item text
         doc.text(itemText, 10, yOffset);
 
-        // Add the dash in a fixed position
-        doc.text(' -', dashPosition, yOffset); 
+        // Add the dash at a fixed position
+        doc.text(' -', dashPosition, yOffset);
 
         // Add quantity after the dash
         doc.text(quantityText, 12 + dashPosition, yOffset);
-        
+
         // Increment yOffset and item number
         yOffset += 10;
         itemNumber++;
@@ -136,6 +182,7 @@ function generatePDF() {
     // Save the PDF
     doc.save("catering-details.pdf");
 }
+
 
 
 

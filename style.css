@@ -356,3 +356,39 @@ textarea.form-control {
 }
 
 /* Add more styles as needed */
+
+
+
+/* Make the product-row class display in a flexible layout */
+.product-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Wraps the items if the screen is too narrow */
+    margin-bottom: 10px;
+}
+
+/* Adjust width of inputs and selects to fit smaller screens */
+.product-row input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.product-row label {
+    flex: 1 1 auto; /* Allows the label to take more space */
+    min-width: 100px; /* Prevents it from shrinking too much */
+}
+
+.product-row input[type="number"],
+.product-row select {
+    flex: 0 1 80px; /* Limits width on smaller screens */
+    margin-left: 10px;
+}
+
+/* Mobile-specific styles for screens smaller than 600px */
+@media (max-width: 600px) {
+    .product-row label,
+    .product-row input[type="number"],
+    .product-row select {
+        width: 100%; /* Full width on mobile */
+        margin-top: 5px; /* Adds spacing for readability */
+    }
+}
